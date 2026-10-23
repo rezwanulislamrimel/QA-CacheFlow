@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "QA Cache Cleaner",
+  "version": "1.0.0",
+  "description": "One-click, scoped cache and site-data clearing for QA Engineers. Supports per-domain presets, environment labels, history, and safe login-preserving cleanup.",
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "QA Cache Cleaner",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "options_page": "options.html",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "permissions": [
+    "browsingData",
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+
+  "optional_permissions": [
+    "cookies"
+  ],
+
+  "commands": {
+    "clear-cache-reload": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Clear cache for current site and reload"
+    },
+    "clear-cache-only": {
+      "suggested_key": {
+        "default": "Alt+Shift+X"
+      },
+      "description": "Clear HTTP cache for current site (preserve login)"
+    },
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+Q"
+      },
+      "description": "Open QA Cache Cleaner"
+    }
+  },
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

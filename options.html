@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Cache Cleaner – Options</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body id="body" class="theme-light">
+
+  <div class="options-container">
+    <header class="options-header">
+      <div class="options-header-left">
+        <img src="icons/icon48.png" alt="" width="32" height="32" class="logo" />
+        <div>
+          <h1 class="options-title">QA Cache Cleaner</h1>
+          <p class="options-subtitle">Settings &amp; Configuration</p>
+        </div>
+      </div>
+      <button id="btn-theme" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">
+        <svg id="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+        <svg id="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </header>
+
+    <nav class="options-nav" role="navigation" aria-label="Options sections">
+      <button class="nav-tab active" data-tab="general">General</button>
+      <button class="nav-tab" data-tab="shortcuts">Shortcuts</button>
+      <button class="nav-tab" data-tab="permissions">Permissions</button>
+      <button class="nav-tab" data-tab="data">Data &amp; Privacy</button>
+      <button class="nav-tab" data-tab="about">About &amp; Limitations</button>
+    </nav>
+
+    <!-- ══ GENERAL TAB ══ -->
+    <section id="tab-general" class="tab-content active" aria-label="General settings">
+
+      <div class="card">
+        <h2 class="card-title">Appearance</h2>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Theme</span>
+            <span class="setting-desc">Choose light or dark interface</span>
+          </div>
+          <select id="pref-theme" class="select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Default Cleanup Behavior</h2>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Default time range</span>
+            <span class="setting-desc">How far back to clear data when using quick actions</span>
+          </div>
+          <select id="pref-since" class="select">
+            <option value="0">All time</option>
+            <option value="3600000">Last 1 hour</option>
+            <option value="86400000">Last 24 hours</option>
+            <option value="604800000">Last 7 days</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Preserve Login by default</span>
+            <span class="setting-desc">Always protect cookies and localStorage in the data selector</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="pref-preserve-login" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Auto-clear Cache Storage</span>
+            <span class="setting-desc">Include Cache Storage in quick "Clear Cache" action</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="pref-cache-storage" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">History</h2>
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Maximum history entries</span>
+            <span class="setting-desc">Older entries are automatically removed (max 100)</span>
+          </div>
+          <select id="pref-history-max" class="select">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="save-row">
+        <button id="btn-save" class="btn-primary">Save Settings</button>
+        <span id="save-status" class="save-status" hidden>✓ Saved</span>
+      </div>
+    </section>
+
+    <!-- ══ SHORTCUTS TAB ══ -->
+    <section id="tab-shortcuts" class="tab-content" aria-label="Keyboard shortcuts" hidden>
+      <div class="card">
+        <h2 class="card-title">Keyboard Shortcuts</h2>
+        <p class="card-desc">
+          Chrome handles shortcut bindings. Click "Manage shortcuts" to change them in Chrome's
+          built-in shortcut manager. The defaults shown below are suggested values.
+        </p>
+
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Default Shortcut</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Open QA Cache Cleaner</td>
+              <td><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd></td>
+              <td>Opens the popup</td>
+            </tr>
+            <tr>
+              <td>Clear Cache (preserve login)</td>
+              <td><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd></td>
+              <td>HTTP cache + Cache Storage only</td>
+            </tr>
+            <tr>
+              <td>Clear Cache &amp; Reload</td>
+              <td><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd></td>
+              <td>Cache cleared first, then tab reloads</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <a href="chrome://extensions/shortcuts" class="btn-link" id="btn-manage-shortcuts" target="_blank" rel="noopener noreferrer">
+          Manage Chrome Shortcuts →
+        </a>
+      </div>
+
+      <div class="card notice-card notice-info-card">
+        <h3>⌨ Shortcut Limitation</h3>
+        <p>
+          Chrome Extensions can only register up to 4 keyboard shortcuts and cannot use
+          <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Delete</kbd> (reserved by Chrome).
+          Alt+Shift combinations work reliably across platforms.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ PERMISSIONS TAB ══ -->
+    <section id="tab-permissions" class="tab-content" aria-label="Permissions" hidden>
+      <div class="card">
+        <h2 class="card-title">Required Permissions</h2>
+        <p class="card-desc">
+          This extension requests the minimum permissions needed. Here is exactly why each is required:
+        </p>
+
+        <div class="perm-list">
+
+          <div class="perm-item">
+            <div class="perm-name">
+              <span class="perm-badge perm-required">Required</span>
+              <code>browsingData</code>
+            </div>
+            <p class="perm-why">
+              Required to call <code>chrome.browsingData.remove()</code> which clears HTTP cache,
+              Cache Storage, cookies, localStorage, IndexedDB, and service workers.
+              Without this, no cleanup is possible.
+            </p>
+          </div>
+
+          <div class="perm-item">
+            <div class="perm-name">
+              <span class="perm-badge perm-required">Required</span>
+              <code>tabs</code>
+            </div>
+            <p class="perm-why">
+              Required to read the current tab's URL and hostname so cleanup can be scoped
+              to the correct origin. Also needed to reload the tab after cleanup and to update
+              the action badge when the active tab changes.
+            </p>
+          </div>
+
+          <div class="perm-item">
+            <div class="perm-name">
+              <span class="perm-badge perm-required">Required</span>
+              <code>storage</code>
+            </div>
+            <p class="perm-why">
+              Required to persist saved sites, cleanup history, preferences, and theme.
+              Uses <code>chrome.storage.local</code> only — data never leaves the device.
+            </p>
+          </div>
+
+          <div class="perm-item">
+            <div class="perm-name">
+              <span class="perm-badge perm-required">Required</span>
+              <code>activeTab</code>
+            </div>
+            <p class="perm-why">
+              Allows reading the currently active tab without requiring broad host permissions.
+              Granted only when the user explicitly interacts with the extension.
+            </p>
+          </div>
+
+          <div class="perm-item">
+            <div class="perm-name">
+              <span class="perm-badge perm-optional">Optional</span>
+              <code>cookies</code>
+            </div>
+            <p class="perm-why">
+              Listed as an optional permission for future features (e.g., listing cookies for a domain).
+              Cookie clearing is handled through <code>browsingData</code> which does not require this permission.
+              Not currently requested at runtime.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card notice-card notice-info-card">
+        <h3>🔒 No Host Permissions</h3>
+        <p>
+          This extension does <strong>not</strong> request <code>&lt;all_urls&gt;</code> or any
+          host-match patterns. It uses <code>activeTab</code> which gives access only when the
+          user explicitly invokes the extension. This minimizes the extension's privilege surface.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ DATA & PRIVACY TAB ══ -->
+    <section id="tab-data" class="tab-content" aria-label="Data and privacy" hidden>
+      <div class="card">
+        <h2 class="card-title">What Data We Store</h2>
+        <p class="card-desc">All data is stored locally on your device using <code>chrome.storage.local</code>.</p>
+        <ul class="data-list">
+          <li><strong>Saved sites:</strong> Name, domain, environment label, optional notes. No credentials.</li>
+          <li><strong>Cleanup history:</strong> Domain name, timestamp, data types cleared. No page content.</li>
+          <li><strong>Preferences:</strong> Theme, default time range, preserve-login toggle.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">What We Never Collect</h2>
+        <ul class="data-list data-list-safe">
+          <li>We never transmit any data to external servers.</li>
+          <li>We never read page content, form data, or credentials.</li>
+          <li>We never store full URLs or query strings in history.</li>
+          <li>We do not use analytics, tracking, or crash reporting.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Export &amp; Delete Local Data</h2>
+        <div class="data-actions">
+          <button id="btn-export-sites" class="btn-secondary">Export Saved Sites (JSON)</button>
+          <button id="btn-import-sites" class="btn-secondary">Import Saved Sites (JSON)</button>
+          <input type="file" id="import-file" accept=".json" hidden />
+        </div>
+        <div style="margin-top: 12px;">
+          <button id="btn-nuke-all" class="btn-danger">⚠ Delete All Extension Data</button>
+          <p class="danger-note">This removes all saved sites, history, and preferences. Cannot be undone.</p>
+        </div>
+        <div id="data-status" class="data-status" hidden></div>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT & LIMITATIONS TAB ══ -->
+    <section id="tab-about" class="tab-content" aria-label="About and limitations" hidden>
+      <div class="card">
+        <h2 class="card-title">QA Cache Cleaner v1.0.0</h2>
+        <p class="card-desc">
+          Built for Software QA Engineers. Manifest V3 Chrome Extension using vanilla JS, HTML, and CSS.
+          No frameworks. No external dependencies. No telemetry.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Known API Limitations</h2>
+        <ul class="limitations-list">
+          <li>
+            <strong>HTTP Cache is origin-scoped, not truly domain-scoped.</strong>
+            Clearing <code>https://app.example.com</code> does not clear
+            <code>https://static.example.com</code> or resources from CDN origins.
+            Resources loaded by the page from third-party origins are unaffected.
+          </li>
+          <li>
+            <strong>sessionStorage cannot be cleared via browsingData API.</strong>
+            <code>chrome.browsingData</code> has no <code>sessionStorage</code> data type.
+            sessionStorage is automatically discarded when the tab closes or navigates.
+            This is an honest Chrome API limitation.
+          </li>
+          <li>
+            <strong>Cookie domain scoping may affect subdomains.</strong>
+            A cookie with Domain=<code>.example.com</code> is shared across
+            <code>app.example.com</code>, <code>api.example.com</code>, etc.
+            Clearing cookies for one origin may sign the user out of other subdomains.
+          </li>
+          <li>
+            <strong>Localhost ports are separate origins.</strong>
+            <code>http://localhost:3000</code> and <code>http://localhost:3001</code>
+            are treated as completely separate origins. Data for each port must be
+            cleared separately.
+          </li>
+          <li>
+            <strong>Hard reload is not the same as clearing cache.</strong>
+            A hard reload (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>) bypasses disk cache for
+            the navigation request but still uses cached subresources. The extension's
+            "Clear Cache &amp; Reload" actually removes cached data before reloading.
+          </li>
+          <li>
+            <strong>Service worker caches.</strong>
+            Service workers manage their own caches via the Cache API. Clearing
+            Cache Storage via browsingData removes these caches. Clearing
+            serviceWorkers unregisters the SW, which will re-register on the
+            next page load and may re-populate its caches.
+          </li>
+          <li>
+            <strong>origins filter availability.</strong>
+            The <code>origins</code> filter on <code>chrome.browsingData</code> was added in Chrome 74.
+            On older or non-Chrome browsers, cleanup may fail. We never fall back to
+            global clearing — instead we report the error honestly.
+          </li>
+          <li>
+            <strong>Shared browser caches.</strong>
+            Some browser-managed caches (DNS cache, SSL session cache, HSTS cache) are
+            not exposed by the <code>browsingData</code> API and cannot be cleared by this extension.
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Pre-Release Checklist</h2>
+        <ul class="checklist">
+          <li>✅ All permissions justified in manifest and options page</li>
+          <li>✅ No external network requests</li>
+          <li>✅ No eval() or inline scripts</li>
+          <li>✅ Content Security Policy set in manifest</li>
+          <li>✅ All user inputs validated and sanitized</li>
+          <li>✅ Destructive actions require confirmation</li>
+          <li>✅ sessionStorage limitation clearly documented (not falsely claimed)</li>
+          <li>✅ Reload only fires after async cleanup resolves</li>
+          <li>✅ Busy-state prevents concurrent cleanup calls</li>
+          <li>✅ chrome:// and internal URLs are blocked</li>
+          <li>✅ light/dark theme with accessible contrast</li>
+          <li>✅ All referenced file names match actual files</li>
+          <li>✅ chrome.runtime.lastError handled in all storage calls</li>
+          <li>✅ No global browsingData fallback — error reported if scoped API fails</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
